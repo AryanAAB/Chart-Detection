@@ -91,22 +91,20 @@ The code for chart type detection can be found in [ChartTextDetection.ipynb](Cha
 
 ## Combining All the Above Steps
 
-In order to test the above steps on an actual image, I decided to run the models for a sample image. The image I selected
-which is shown below was randomly selected from the **PlotQA Dataset.** 
+To test the entire process on an actual image, I ran the models on a sample image randomly selected from the **PlotQA Dataset**.
 
 ![Original Image](images/FinalImageOriginal.png)
 
-The first step is to detect the chart type of the image and see whether this image is a scatter plot which the **CNN** model
-correctly gave "dot_line". The next step is to detect the chart elements such as title, canvas, etc., for the scatter plot
-with the help of the **Detectron2** model. The output is shown below.
+The first step was to determine the chart type. Using the **CNN model**, the image was correctly classified as a "dot_line" chart. 
+Next, I used the **Detectron2 model** to identify chart elements such as the title, canvas, and axes. The output is shown below:
 
 ![Element Detection](images/FinalImageChartElements.png)
 
-Finally, we have to detect the text for each component as shown below.
+Finally, I applied text detection to extract the text from each detected component:
 
 ![Text Detection](images/FinalImageChartElementsWithText.png)
 
-It can be seen that the text detection part is not that accurate which we would need to improve on.
+While the overall process worked, the text detection results were not entirely accurate and require further improvements.
 
 The code for scatter plot detection can be found in [ScatterPlotDetection.ipynb](ScatterPlotDetection.ipynb).
 
