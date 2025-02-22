@@ -52,6 +52,10 @@ results as shown in these unseen sample images.
 
 ![Scatter Plot Element Detection Result 2](images/ScatterPlotSampleChartElementResult2.png)
 
+The code for scatter plot element detection can be found in [ScatterPlotElementDetection.ipynb](ScatterPlotElementDetection.ipynb). This
+code uses the PlotQA Dataset for images but custom annotations. The training, testing, and validation dataset adapted from
+PlotQA can be found in this [dataset](https://drive.google.com/drive/folders/1VflyhiSskC1-7se6Mzw3351cwwDndeVs?usp=sharing_).
+
 ## Biases in the Scatter Plot Element Detection
 
 One of the issues I noticed while annotating the images was that there were certain biases in the **PlotQA** dataset 
