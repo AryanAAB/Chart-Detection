@@ -34,8 +34,7 @@ before.
 
 ![Chart Type Detection Categorical Data Results](images/ChartTypeDetectionCategoricalResults.png)
 
-The code for chart type detection can be found in [ChartTypeDetection.ipynb](ChartTypeDetection.ipynb). This code uses 
-the PlotQA Dataset.
+The code for chart type detection can be found in [ChartTypeDetection.ipynb](ChartTypeDetection.ipynb).
 
 ## Scatter Plot Element Detection
 
@@ -71,3 +70,58 @@ y-axis title but incorrectly as the y-labels.
 
 While some biases exist in the **PlotQA Dataset,** if the models are used for images from this dataset, the models
 accurately predict the elements correctly even for unseen images. 
+
+## Chart Text Detection
+
+Text extraction from charts presents distinct challenges due to variations in font styles, orientations, and numerical 
+formats. To tackle this, EasyOCR has been employed as the primary tool, offering a robust solution for recognizing text 
+in such complex environments. However, to maximize recognition accuracy, additional preprocessing steps are essential.
+
+One key issue was extracting numerical values from the charts. More often than not, the numerical characters were often
+interpreted as alphabetic ones. Consequently, to mitigate this, the OCR engine is configured to specifically identify 
+numeric characters when applicable, minimizing errors caused by incorrect character interpretation.
+
+Moreover, sometimes the axes labels contain rotated text, which can significantly hinder recognition accuracy. To address 
+this, an automated rotation correction process has been integrated, ensuring that all text is aligned horizontally before 
+being processed by EasyOCR. This adjustment greatly improves both the readability and precision of detected text.
+
+![Text Detection](images/TextDetection.png)
+
+The code for chart type detection can be found in [ChartTextDetection.ipynb](ChartTextDetection.ipynb).
+
+## Combining All the Above Steps
+
+In order to test the above steps on an actual image, I decided to run the models for a sample image. The image I selected
+which is shown below was randomly selected from the **PlotQA Dataset.** 
+
+![Original Image](images/FinalImageOriginal.png)
+
+The first step is to detect the chart type of the image and see whether this image is a scatter plot which the **CNN** model
+correctly gave "dot_line". The next step is to detect the chart elements such as title, canvas, etc., for the scatter plot
+with the help of the **Detectron2** model. The output is shown below.
+
+![Element Detection](images/FinalImageChartElements.png)
+
+Finally, we have to detect the text for each component as shown below.
+
+![Text Detection](images/FinalImageChartElementsWithText.png)
+
+It can be seen that the text detection part is not that accurate which we would need to improve on.
+
+The code for scatter plot detection can be found in [ScatterPlotDetection.ipynb](ScatterPlotDetection.ipynb).
+
+## Tech Stack
+- Tensorflow: Open-source framework for building and deploying machine learning models.
+- Keras: High-level neural networks API, running on top of TensorFlow, for easier and faster model development.
+- OpenCV: For image processing and pre-processing tasks, especially in vision-related tasks.
+- Convolutional Neural Networks (CNNs): Deep learning architecture for image classification and analysis.
+- Visual Geometry Group (VGG) Network: A specific CNN architecture known for its deep layers and use in image recognition tasks.
+- Detectron2: A library built by Facebook AI Research (FAIR) for object detection tasks.
+- EasyOCR: An open-source Optical Character Recognition (OCR) tool that simplifies the extraction of text from images.
+
+## Frameworks and Dataset
+- NumPy: For numerical computations and handling arrays.
+- Matplotlib: For visualizing training progress, losses, and accuracy metrics.
+- CVAT (Computer Vision Annotation Tool): An open-source tool for annotating images for training object detection models.
+- COCO (Common Objects in Context): A dataset used for object detection and segmentation tasks, which pairs well with Detectron2 for object recognition and segmentation.
+- PlotQA: A dataset designed for visual question answering (VQA) tasks, where models are trained to answer questions based on visual content, like interpreting plots and figures.
