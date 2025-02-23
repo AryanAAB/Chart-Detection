@@ -123,3 +123,36 @@ The code for scatter plot detection can be found in [ScatterPlotDetection.ipynb]
 - CVAT (Computer Vision Annotation Tool): An open-source tool for annotating images for training object detection models.
 - COCO (Common Objects in Context): A dataset used for object detection and segmentation tasks, which pairs well with Detectron2 for object recognition and segmentation.
 - PlotQA: A dataset designed for visual question answering (VQA) tasks, where models are trained to answer questions based on visual content, like interpreting plots and figures.
+
+## References
+
+- P. N. Butani, J. Sreevalsan-Nair, and N. Kamat, "CMA: An End-to-End System for Reverse Engineering Choropleth Map Images," *IEEE Geoscience and Remote Sensing Letters*, vol. 21, pp. 1–5, 2024. DOI: [10.1109/LGRS.2024.3444600](https://ieeexplore.ieee.org/document/10637448).
+
+- Y. Wu, A. Kirillov, F. Massa, W.-Y. Lo, and R. Girshick, "Detectron2," 2019. Available: [https://github.com/facebookresearch/detectron2](https://github.com/facebookresearch/detectron2).
+
+- A. Bergman et al., "CVAT: Computer Vision Annotation Tool," 2024. Available: [https://github.com/openvinotoolkit/cvat](https://github.com/openvinotoolkit/cvat). Accessed: Jan. 11, 2025.
+
+- N. Methani, P. Ganguly, M. M. Khapra, and P. Kumar, "PlotQA: Reasoning over Scientific Plots," in *The IEEE Winter Conference on Applications of Computer Vision (WACV)*, Mar. 2020.
+
+- T. LeNail, "NN-SVG: Publication-Ready Neural Network Architecture Schematics," *Journal of Open Source Software*, vol. 4, no. 33, p. 747, 2019. DOI: [10.21105/joss.00747](https://doi.org/10.21105/joss.00747).
+
+- K. Dadhich, S. Daggubati, and J. Sreevalsan-Nair, "BarChartAnalyzer: Digitizing Images of Bar Charts," in *International Conference on Image Processing and Vision Engineering*, 2021, pp. 17–28. DOI: [10.5220/0010408300170028](https://doi.org/10.5220/0010408300170028).
+
+- K. Simonyan and A. Zisserman, "Very Deep Convolutional Networks for Large-Scale Image Recognition," in *3rd International Conference on Learning Representations (ICLR 2015)*, San Diego, CA, USA, May 7–9, 2015.
+
+- K. Kalra, "Convolutional Neural Networks for Image Classification," *Medium*, Jul. 2023. Available: [https://medium.com/@khwabkalra1/convolutional-neural-networks-for-image-classification-f0754f7b94aa](https://medium.com/@khwabkalra1/convolutional-neural-networks-for-image-classification-f0754f7b94aa). Accessed: Jan. 17, 2025.
+
+- T. Karlsson, S. Raptis, H. Trollvik, and H. Nilsson, "Classifying the Magnetosheath Behind the Quasi‐Parallel and Quasi‐Perpendicular Bow Shock by Local Measurements," *Journal of Geophysical Research: Space Physics*, vol. 126, Sep. 2021. DOI: [10.1029/2021JA029269](https://doi.org/10.1029/2021JA029269).
+
+- Jaided AI, "EasyOCR: Ready-to-use OCR with 80+ Supported Languages," 2024. Available: [https://github.com/JaidedAI/EasyOCR](https://github.com/JaidedAI/EasyOCR). Accessed: Feb. 23, 2025.
+
+## Citing Chart Analysis
+If you use Chart Analysis in your research or refer to these results, please use the following BibTeX entry.
+
+```bibtex
+@misc{AryanAAB,
+  author    = {Aryan Bansal},
+  title     = {Chart-Detection},
+  year      = {2025},
+  howpublished = {\url{https://github.com/AryanAAB/Chart-Detection/}},
+}
