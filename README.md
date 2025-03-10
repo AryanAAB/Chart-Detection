@@ -133,6 +133,8 @@ The code for text detection can be found in [ChartTextDetection.ipynb](ChartText
 - Visual Geometry Group (VGG) Network: A specific CNN architecture known for its deep layers and use in image recognition tasks.
 - Detectron2: A library built by Facebook AI Research (FAIR) for object detection tasks.
 - EasyOCR: An open-source Optical Character Recognition (OCR) tool that simplifies the extraction of text from images.
+- Tesseract: An open-source OCR engine developed by Google that is used for recognizing text in images and converting it to machine-readable text.
+- PaddleOCR: An open-source OCR library, designed to perform high-accuracy text detection and recognition in various languages, including complex scripts.
 
 ## Frameworks and Dataset
 - NumPy: For numerical computations and handling arrays.
