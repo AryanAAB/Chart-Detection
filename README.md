@@ -87,7 +87,7 @@ being processed by EasyOCR. This adjustment greatly improves both the readabilit
 
 ![Text Detection](images/TextDetection.png)
 
-The code for chart type detection can be found in [ChartTextDetection.ipynb](ChartTextDetection.ipynb).
+The code for chart type detection can be found in [ChartTextDetection.ipynb](Original%20Text%20Detection/ChartTextDetection.ipynb).
 
 ## Combining All the Above Steps
 
@@ -106,7 +106,24 @@ Finally, I applied text detection to extract the text from each detected compone
 
 While the overall process worked, the text detection results were not entirely accurate and require further improvements.
 
-The code for scatter plot detection can be found in [ScatterPlotDetection.ipynb](ScatterPlotDetection.ipynb).
+The code for scatter plot detection can be found in [ScatterPlotDetection.ipynb](Original%20Text%20Detection/ScatterPlotDetection.ipynb).
+
+## Improving Chart Text Detection
+I initially employed EasyOCR and Tesseract for extracting text from different chart regions. While these tools provided 
+reasonable results, they exhibited some limitations in terms of accuracy and robustness, particularly when handling 
+rotated texts. To address these challenges, I drew inspiration from the paper "CMA: An End-to-End System for Reverse Engineering Choropleth Map Images". 
+This study presented a comprehensive six-step workflow utilizing deep learning architectures and tools to effectively 
+reverse-engineer choropleth maps. In this paper, the authors used PaddleOCR for text extraction and found that it 
+significantly improved the accuracy of identifying and extracting textual information from the map images. As a result, 
+motivated by these insights, I integrated PaddleOCR in my application. It demonstrated improved performance in detecting
+and recognizing text within charts, especially when dealing with rotated or non-standard text orientations. 
+
+![Legend Text Detection](images/PaddleOCRIMages/legend.png)
+![Title Text Detection](images/PaddleOCRIMages/title.png)
+![X-labels Text Detection](images/PaddleOCRIMages/x-labels.png)
+![Y-labels Text Detection](images/PaddleOCRIMages/y-labels.png)
+
+The code for text detection can be found in [ChartTextDetection.ipynb](ChartTextDetection.ipynb) and for scatter plot detection in [ScatterPlotDetection.ipynb](ScatterPlotDetection.ipynb).
 
 ## Tech Stack
 - Tensorflow: Open-source framework for building and deploying machine learning models.
@@ -126,26 +143,19 @@ The code for scatter plot detection can be found in [ScatterPlotDetection.ipynb]
 
 ## References
 
-- P. N. Butani, J. Sreevalsan-Nair, and N. Kamat, "CMA: An End-to-End System for Reverse Engineering Choropleth Map Images," *IEEE Geoscience and Remote Sensing Letters*, vol. 21, pp. 1–5, 2024. DOI: [10.1109/LGRS.2024.3444600](https://ieeexplore.ieee.org/document/10637448).
-
-- Y. Wu, A. Kirillov, F. Massa, W.-Y. Lo, and R. Girshick, "Detectron2," 2019. Available: [https://github.com/facebookresearch/detectron2](https://github.com/facebookresearch/detectron2).
-
-- A. Bergman et al., "CVAT: Computer Vision Annotation Tool," 2024. Available: [https://github.com/openvinotoolkit/cvat](https://github.com/openvinotoolkit/cvat). Accessed: Jan. 11, 2025.
-
-- N. Methani, P. Ganguly, M. M. Khapra, and P. Kumar, "PlotQA: Reasoning over Scientific Plots," in *The IEEE Winter Conference on Applications of Computer Vision (WACV)*, Mar. 2020.
-
-- T. LeNail, "NN-SVG: Publication-Ready Neural Network Architecture Schematics," *Journal of Open Source Software*, vol. 4, no. 33, p. 747, 2019. DOI: [10.21105/joss.00747](https://doi.org/10.21105/joss.00747).
-
-- K. Dadhich, S. Daggubati, and J. Sreevalsan-Nair, "BarChartAnalyzer: Digitizing Images of Bar Charts," in *International Conference on Image Processing and Vision Engineering*, 2021, pp. 17–28. DOI: [10.5220/0010408300170028](https://doi.org/10.5220/0010408300170028).
-
-- K. Simonyan and A. Zisserman, "Very Deep Convolutional Networks for Large-Scale Image Recognition," in *3rd International Conference on Learning Representations (ICLR 2015)*, San Diego, CA, USA, May 7–9, 2015.
-
-- K. Kalra, "Convolutional Neural Networks for Image Classification," *Medium*, Jul. 2023. Available: [https://medium.com/@khwabkalra1/convolutional-neural-networks-for-image-classification-f0754f7b94aa](https://medium.com/@khwabkalra1/convolutional-neural-networks-for-image-classification-f0754f7b94aa). Accessed: Jan. 17, 2025.
-
-- T. Karlsson, S. Raptis, H. Trollvik, and H. Nilsson, "Classifying the Magnetosheath Behind the Quasi‐Parallel and Quasi‐Perpendicular Bow Shock by Local Measurements," *Journal of Geophysical Research: Space Physics*, vol. 126, Sep. 2021. DOI: [10.1029/2021JA029269](https://doi.org/10.1029/2021JA029269).
-
-- Jaided AI, "EasyOCR: Ready-to-use OCR with 80+ Supported Languages," 2024. Available: [https://github.com/JaidedAI/EasyOCR](https://github.com/JaidedAI/EasyOCR). Accessed: Feb. 23, 2025.
-
+- P. N. Butani, J. Sreevalsan-Nair, and N. Kamat, “Cma: An end-to-end system for reverse engineering choropleth map images,” IEEE Geoscience and Remote Sensing Letters, vol. 21, pp. 1–5, 2024, presented in the GRSL Special Stream at the 37th Conference on Graphics, Patterns and Images (SIBGRAPI 2024). [Online]. Available:https://ieeexplore.ieee.org/document/10637448
+- Y. Wu, A. Kirillov, F. Massa, W.-Y. Lo, and R. Girshick, “Detectron2,”https://github.com/facebookresearch/detectron2, 2019. 
+- A. Bergman et al., “Cvat: Computer vision annotation tool,” 2024, accessed: 2025-01-11. [Online]. Available: https://github.com/openvinotoolkit/cvat
+- N. Methani, P. Ganguly, M. M. Khapra, and P. Kumar, “Plotqa:Reasoning over scientific plots,” in The IEEE Winter Conference on Applications of Computer Vision (WACV), March 2020. 
+- T. LeNail, “Nn-svg: Publication-ready neural network architecture schematics,” Journal of Open Source Software, vol. 4, no. 33, p. 747, 2019. [Online]. Available: https://doi.org/10.21105/joss.00747
+- K. Simonyan and A. Zisserman, “Very deep convolutional networks for large-scale image recognition,” in 3rd International Conference on Learning Representations (ICLR 2015), Y. Bengio and Y. LeCun, Eds., San Diego, CA, USA, May 7-9 2015, p. Conference Track Proceedings. 
+- K. Dadhich, S. Daggubati, and J. Sreevalsan-Nair, “Barchartanalyzer:Digitizing images of bar charts,” in International Conference on Image Processing and Vision Engineering, 01 2021, pp. 17–28. 
+- K. Kalra. (2023, Jul.) Convolutional neural net-works for image classification. Accessed: 2025-01-17. [Online]. Available: https://medium.com/@khwabkalra1/convolutional-neural-networks-for-image-classification-f0754f7b94aa
+- T. Karlsson, S. Raptis, H. Trollvik, and H. Nilsson, “Classifying the magnetosheath behind the quasi-parallel and quasi-perpendicular bow shock by local measurements,” Journal of Geophysical Research: Space Physics, vol. 126, 09 2021. 
+- J. AI, “Easyocr: Ready-to-use ocr with 80+ supported languages,” https://github.com/JaidedAI/EasyOCR, 2024, accessed: 2025-02-23. 
+- R. Smith, “An overview of the tesseract ocr engine,” in Proceedings of the Ninth International Conference on Document Analysis and Recognition (ICDAR), 2007, pp. 629–633. [Online]. Available:https://ieeexplore.ieee.org/document/4376991
+- P. Contributors, “Paddleocr: Awesome multilingual ocr toolkits based on paddlepaddle,” https://github.com/PaddlePaddle/PaddleOCR, 2023, accessed: 2025-03-10.
+    
 ## Citing Chart Analysis
 If you use Chart Analysis in your research or refer to these results, please use the following BibTeX entry.
 
