@@ -118,10 +118,23 @@ significantly improved the accuracy of identifying and extracting textual inform
 motivated by these insights, I integrated PaddleOCR in my application. It demonstrated improved performance in detecting
 and recognizing text within charts, especially when dealing with rotated or non-standard text orientations. 
 
-![Legend Text Detection](images/PaddleOCRIMages/legend.png)
 ![Title Text Detection](images/PaddleOCRIMages/title.png)
 ![X-labels Text Detection](images/PaddleOCRIMages/x-labels.png)
 ![Y-labels Text Detection](images/PaddleOCRIMages/y-labels.png)
+![Y-title Text Detection](images/PaddleOCRIMages/y-title.png)
+
+It can be seen that the y-axis title is not accurately being detected because the text is rotated. As a result, I decided
+to perform PaddleOCR separately for each ROI. These results can be seen below.
+
+![Title Text Detection](images/PaddleOCRIMages/titleUpdated.png)
+![X-labels Text Detection](images/PaddleOCRIMages/x-labelsUpdated.png)
+![Y-labels Text Detection](images/PaddleOCRIMages/y-labelsUpdated.png)
+![Y-title Text Detection](images/PaddleOCRIMages/y-titleUpdated.png)
+
+The detected text is more precise and accurate. However, there is a problem because it can be possible that the bounding box
+for each ROI does not accurately represent that ROI (such as the title in the above pictures which cuts off "Di" in "Division").
+As a result, the model detects "Vision" instead of "Division" as the starting word for the title. However, these issues can
+be easily corrected with the help of any language model or by training the Chart Element Detector model with more samples.
 
 The code for text detection can be found in [ChartTextDetection.ipynb](ChartTextDetection.ipynb) and for scatter plot detection in [ScatterPlotDetection.ipynb](ScatterPlotDetection.ipynb).
 
