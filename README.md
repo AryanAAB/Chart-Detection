@@ -124,7 +124,8 @@ and recognizing text within charts, especially when dealing with rotated or non-
 ![Y-title Text Detection](images/PaddleOCRIMages/y-title.png)
 
 It can be seen that the y-axis title is not accurately being detected because the text is rotated. As a result, I decided
-to perform PaddleOCR separately for each ROI. These results can be seen below.
+to perform PaddleOCR separately for each ROI at four different angles(0, 90, 180, 270) and choose the one that gave the best confidence
+value. These results can be seen below.
 
 ![Title Text Detection](images/PaddleOCRIMages/titleUpdated.png)
 ![X-labels Text Detection](images/PaddleOCRIMages/x-labelsUpdated.png)
@@ -137,6 +138,31 @@ As a result, the model detects "Vision" instead of "Division" as the starting wo
 be easily corrected with the help of any language model or by training the Chart Element Detector model with more samples.
 
 The code for text detection can be found in [ChartTextDetection.ipynb](ChartTextDetection.ipynb) and for scatter plot detection in [ScatterPlotDetection.ipynb](ScatterPlotDetection.ipynb).
+
+## Legend Detection
+
+The next step in the process is mapping detected colors to their corresponding textual labels. This is crucial for 
+correctly associating graphical elements with their descriptions, ensuring accurate interpretation of the visual data. 
+
+Proximity-based matching relies on analyzing the spatial distance between detected circles and text labels. 
+The assumption is that the closest text to a circle is its corresponding label. 
+
+To implement this, the following steps are taken:
+- Extract the positions of the text elements which is done in the previous section. 
+- Determine the positions of the colored circles by detecting contours in the image. This can be done by following steps:
+  - Convert the image to grayscale to remove color information because it is unnecessary for detecting shapes. 
+  - Use Adaptive thresholding on the grayscale image to convert it into a binary image by distinguishing objects from background based on local pixel intensity variations (the detected objects are white and the background is black which is easier for contour detection). 
+  - Finally find the contours in the image and retrieve only the outermost contours. 
+- Sort the labels and circles based on their y-coordinates because the vertical position of labels and circles are at the same level in legends.
+- For each vertical coordinate, go from left to right and match the circle with the label.
+  
+This method is particularly effective for structured legends where text labels are positioned near their corresponding circles. However, in cases where legends are complex or ambiguous, additional processing techniques such as OCR confidence filtering and layout pattern analysis may be required.
+The results can be seen below.
+
+![Original Legend](images/Legend.png)
+![Color Detection](images/ColorDetection.png)
+![Final Legend](images/ColorTextLegend.png)
+![Final Mapping](images/FinalMapping.png)
 
 ## Tech Stack
 - Tensorflow: Open-source framework for building and deploying machine learning models.
