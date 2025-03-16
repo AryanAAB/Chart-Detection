@@ -155,6 +155,7 @@ To implement this, the following steps are taken:
   - Finally find the contours in the image and retrieve only the outermost contours. 
 - Sort the labels and circles based on their y-coordinates because the vertical position of labels and circles are at the same level in legends.
 - For each vertical coordinate, go from left to right and match the circle with the label.
+- For detecting the actual color of the circle, find the most frequent color in the colored circle image
   
 This method is particularly effective for structured legends where text labels are positioned near their corresponding circles. However, in cases where legends are complex or ambiguous, additional processing techniques such as OCR confidence filtering and layout pattern analysis may be required.
 The results can be seen below.
