@@ -164,6 +164,24 @@ The results can be seen below.
 ![Final Legend](images/ColorTextLegend.png)
 ![Final Mapping](images/FinalMapping.png)
 
+## Find Corresponding Labels in the Canvas
+
+The next step would be to detect these labels in the canvas (i.e., the plotted region). According to nathancy from Stack
+Overflow, the standard procedure for detecting circles with specific colors using OpenCV is described below.
+
+- The canvas region is first converted from BGR to HSV color space. This is because the HSV color space makes it 
+easier to define colors based on their hue, saturation, and value, which is ideal for detecting specific colors. 
+- For each label, we need to specify the range of hues (or colors) that correspond to the label we are looking for. 
+This is done by defining an upper and lower boundary in the HSV space for the desired color (color of label $\pm$ tolerance). 
+- After applying the mask,find the contours of the detected labels
+- In order to determine if the detected labels are actually circular, we can filter based on the number of vertices in 
+- OpenCV (if number of vertices is more than 5 in our case, we can consider it as a circle).
+
+The results can be seen below and are fairly accurate.
+
+![Detected Labels 1](images/DetectedLabels1.png)
+![Detected Labels 2](images/DetectedLabels2.png)
+
 ## Tech Stack
 - Tensorflow: Open-source framework for building and deploying machine learning models.
 - Keras: High-level neural networks API, running on top of TensorFlow, for easier and faster model development.
