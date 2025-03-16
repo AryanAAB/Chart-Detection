@@ -214,7 +214,7 @@ The results can be seen below and are fairly accurate.
 - J. AI, “Easyocr: Ready-to-use ocr with 80+ supported languages,” https://github.com/JaidedAI/EasyOCR, 2024, accessed: 2025-02-23. 
 - R. Smith, “An overview of the tesseract ocr engine,” in Proceedings of the Ninth International Conference on Document Analysis and Recognition (ICDAR), 2007, pp. 629–633. [Online]. Available:https://ieeexplore.ieee.org/document/4376991
 - P. Contributors, “Paddleocr: Awesome multilingual ocr toolkits based on paddlepaddle,” https://github.com/PaddlePaddle/PaddleOCR, 2023, accessed: 2025-03-10.
-    
+- S. Overflow, “Detect circles with specific colors using opencv,” https://stackoverflow.com/questions/56875876/detect-circles-with-specific-colors-using-opencv, accessed: 2025-03-16.  
 ## Citing Chart Analysis
 If you use Chart Analysis in your research or refer to these results, please use the following BibTeX entry.
 
